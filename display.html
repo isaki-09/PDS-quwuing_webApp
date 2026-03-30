@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Queue Display</title>
+  <link rel="stylesheet" href="View.css">
+</head>
+<body>
+
+<div class="header">
+ <div class="top-bar">
+  <div class="logo-section">
+    <img src="logo.png" class="logo">
+    <span class="brand">PLANET DRUGSTORE</span>
+  </div>
+
+  <div class="clock">
+    <span id="time">12:00</span>
+    <span id="ampm">PM</span>
+  </div>
+</div>
+<div class="display-container">
+
+  <div class="left-panel">
+  <h2>Now Ready...</h2>
+
+  <div class="ready-container">
+    
+    <!-- REGULAR -->
+    <div class="ready-card white">
+      <div id="regularServing">--</div>
+      <h3>Regular Patient</h3>
+      <p>Please proceed to counter</p>
+    </div>
+
+    <!-- PRIORITY -->
+    <div class="ready-card red">
+      <div id="priorityServing">--</div>
+      <h3>Priority Patient</h3>
+      <p>Please proceed to counter</p>
+    </div>
+
+  </div>
+</div>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-panel">
+    <h2>Now Preparing...</h2>
+
+    <div id="queueList" class="queue-list"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
