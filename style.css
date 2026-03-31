@@ -170,6 +170,24 @@ body {
   color: #f07171;
 }
 
+.print-section {
+  margin-top: 60px;
+}
+
+.print-section h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.print-section {
+  margin-top: 60px;
+}
+
+.print-section h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
 /* ===================== */
 /* TIME */
 /* ===================== */
@@ -249,4 +267,12 @@ body {
 
 .reset-btn:hover {
   background: #e63946;
+}
+
+.logo {
+  height: 50px;   /* 🔥 smaller */
+  width: auto;
+  max-width: 220px; /* 🔥 limits long logo */
+  object-fit: contain;
+  padding: 15px 40px;
 }

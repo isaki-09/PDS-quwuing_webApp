@@ -34,6 +34,7 @@ function printTicket(data) {
     <html>
       <body style="text-align:center;font-family:Arial;">
         <h3>Planet Drugstore</h3>
+        <h5>- - OSMAK - -</h5>
         <p>${data.type.toUpperCase()} PATIENT</p>
         <h1>${data.number.toString().padStart(2, '0')}</h1>
       </body>
@@ -51,37 +52,27 @@ function callCurrent(type) {
   let item = queue.find(q => q.type === type);
   if (!item) return;
 
+  // 🔥 TRIGGER GLOW HERE (ON CALL)
+  localStorage.setItem("lastCalledType", item.type);
+  localStorage.setItem("lastCalledTime", Date.now());
+
   speak(item);
-}
-
-function nextQueue(type) {
-  // find index of first matching type
-  let index = queue.findIndex(q => q.type === type);
-
-  if (index === -1) return;
-
-  // remove that item
-  queue.splice(index, 1);
-
-  save();
-  renderAll();
 }
 
 // =====================
 // VOICE
 // =====================
 function speak(data) {
-  const text = `Now serving number ${data.number}, ${data.type} patient`;
+  const text = `${data.type} patient number ${data.number}, Please proceed to planet window.`;
 
-  // 🔔 DING SOUND
   const audio = new Audio("https://www.soundjay.com/buttons/sounds/button-3.mp3");
 
   audio.play().then(() => {
     setTimeout(() => {
-      speakRepeat(text, 2); // 🔁 repeat 2 times
+      speakRepeat(text, 1);
     }, 400);
   }).catch(() => {
-    speakRepeat(text, 2);
+    speakRepeat(text, 1);
   });
 }
 
@@ -174,19 +165,45 @@ function renderDisplay() {
       : "--";
   }
 
+  // LIST
   if (list) {
     list.innerHTML = "";
 
-    queue.slice(0, 4).forEach(q => {
+    queue.forEach((q, index) => {
       let typeClass = q.type === "priority" ? "priority" : "";
+      let activeClass = index === 0 ? "active" : "";
 
       list.innerHTML += `
-        <div class="queue-item ${typeClass}">
-          ${q.number.toString().padStart(2, '0')} 
-          <span>${q.type === 'priority' ? 'Priority Patient' : 'Regular Patient'}</span>
+        <div class="queue-item ${typeClass} ${activeClass}">
+          ${q.number.toString().padStart(2, '0')} - 
+          ${q.type === 'priority' ? 'Priority Patient' : 'Regular Patient'}
         </div>
       `;
     });
+  }
+
+  // 🔥 GLOW EFFECT
+  let regularCard = document.getElementById("regularCard");
+  let priorityCard = document.getElementById("priorityCard");
+
+  let lastType = localStorage.getItem("lastCalledType");
+  let lastTime = parseInt(localStorage.getItem("lastCalledTime"));
+
+  if (regularCard && priorityCard) {
+    regularCard.classList.remove("glow");
+    priorityCard.classList.remove("glow");
+
+    if (lastTime) {
+      let diff = (Date.now() - lastTime) / 1000;
+
+      if (diff <= 10) {
+        if (lastType === "priority") {
+          priorityCard.classList.add("glow");
+        } else if (lastType === "regular") {
+          regularCard.classList.add("glow");
+        }
+      }
+    }
   }
 }
 
@@ -232,7 +249,10 @@ function resetQueue() {
 // =====================
 setInterval(() => {
   queue = JSON.parse(localStorage.getItem("queue")) || [];
-  current = JSON.parse(localStorage.getItem("current")) || null;
+
+  // 🔥 FORCE REFRESH OF GLOW DATA
+  localStorage.getItem("lastCalledType");
+  localStorage.getItem("lastCalledTime");
 
   renderDisplay();
 }, 500);

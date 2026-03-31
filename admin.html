@@ -8,13 +8,15 @@
 
 <body class="admin-body">
 
+<!-- TOP BAR (GLOBAL) -->
+<div class="top-bar">
+  <div class="logo-section">
+    <img src="assets/PLDS_Logo_inLine_copy.png" alt="logo" class="logo">
+  </div>
+
 <div class="admin-container">
-
-  <!-- LEFT SIDE -->
   <div class="left-panel">
-
-    <h2 class="logo">Planet Drugstore</h2>
-    <h1 class="greeting">Good Morning</h1>
+  <h1 class="greeting">Good Morning</h1>
 
     <!-- REGULAR HEADER -->
     <div class="section-header">
@@ -60,7 +62,24 @@
       </button>
     </div>
 
+  <!-- <div class="print-section">
+  <h3>Print Number</h3>
+
+  <div class="button-group">
+    <button onclick="printLatest('regular')" class="btn white-btn">
+      ADD <br><small>Regular Patient</small>
+    </button>
+
+    <button onclick="printLatest('priority')" class="btn red-btn">
+      ADD <br><small>Priority Patient</small>
+    </button>
   </div>
+</div> -->
+
+
+
+  </div>
+
 
   <!-- RIGHT SIDE -->
   <div class="right-panel">
@@ -84,12 +103,14 @@
       </button>
 
     </div>
-
+    
     <!-- QUEUE LIST -->
     <h3>Queue List...</h3>
     <div id="adminQueue" class="queue-list"></div>
 
   </div>
+
+  
 
 </div>
 

@@ -1,10 +1,256 @@
 /* ===================== */
-/* GLOBAL */
+/* GLOBAL SCALE */
 /* ===================== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: #f4f4f4;
+}
+
+/* ===================== */
+/* TOP BAR */
+/* ===================== */
+.top-bar {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  right: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 80px; /* 🔥 bigger */
+}
+
+.logo {
+  height: 70px;   /* 🔥 perfect for your layout */
+  width: auto;
+  object-fit: contain;
+}
+
+.brand {
+  font-size: 22px;
+}
+
+/* CLOCK */
+.clock {
+  background: #dcdcdc;
+  padding: 25px 70px;
+  border-radius: 30px;
+  font-size: 36px; /* 🔥 bigger */
+  font-weight: bold;
+}
+
+/* ===================== */
+/* MAIN LAYOUT */
+/* ===================== */
+.display-container {
+  height: 100vh;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 180px 100px 60px; /* more breathing */
+  gap: 80px;
+}
+
+/* ===================== */
+/* LEFT SIDE */
+/* ===================== */
+.left-panel {
+  flex: 2;
+}
+
+.left-panel h2 {
+  font-size: 36px; /* 🔥 bigger title */
+  margin-bottom: 40px;
+}
+
+/* ===================== */
+/* READY CARDS */
+/* ===================== */
+.ready-container {
+  display: flex;
+  gap: 80px;
+}
+
+.ready-card {
+  width: 550px;
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 35px;
+
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.2),
+    0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* NUMBER */
+.ready-card div {
+  font-size: 350px; /* 🔥 BIG for TV */
+  font-weight: 900;
+
+  text-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* TEXT */
+.ready-card h3 {
+  font-size: 50px;
+  margin-top: 1px;
+}
+
+/* .ready-card p {
+  font-size: 20px;
+} */
+
+/* COLORS */
+.ready-card.white {
+  background: #f5f5f5;
+  color: #111;
+}
+
+.ready-card.red {
+  background: #ee6b6b;
+  color: white;
+}
+
+/* ===================== */
+/* RIGHT PANEL */
+/* ===================== */
+.right-panel {
+  width: 450px;
+}
+
+.right-panel h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+/* ===================== */
+/* QUEUE LIST */
+/* ===================== */
+.queue-list {
+  margin-top: 20px;
+}
+
+.queue-item {
+  background: #f3f3f3;
+  padding: 22px;
+  border-radius: 18px;
+  margin-bottom: 15px;
+
+  font-size: 24px; /* 🔥 readable */
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.queue-item.priority {
+  background: #ee6b6b;
+  color: white;
+}
+
+/* ===================== */
+/* ANIMATION */
+/* ===================== */
+
+/* Fade in */
+/* .queue-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+/* ===================== */
+/* ACTIVE ITEM */
+/* ===================== */
+/* .queue-item.active {
+  border: 3px solid #e63946;
+
+  box-shadow:
+    0 0 20px rgba(230,57,70,0.5),
+    0 10px 20px rgba(0,0,0,0.1);
+
+  transform: scale(1.05);
+} */
+
+/* PRIORITY ACTIVE */
+.queue-item.priority.active {
+  border: 3px solid white;
+
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.6),
+    0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* 🔥 GLOW EFFECT (NOT BLINKING) */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0px rgba(230,57,70, 0);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(230,57,70, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(230,57,70, 0);
+  }
+}
+
+/* 🔥 STRONG GLOW (VISIBLE ON TV) */
+@keyframes glowPulse {
+  0% {
+    box-shadow:
+      0 0 0 rgba(240,113,113, 0),
+      0 30px 60px rgba(0,0,0,0.2),
+      0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 80px rgba(240,113,113, 0.9), /* 🔥 STRONG GLOW */
+      0 30px 60px rgba(0,0,0,0.2),
+      0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 rgba(240,113,113, 0),
+      0 30px 60px rgba(0,0,0,0.2),
+      0 10px 20px rgba(0,0,0,0.15);
+  }
+}
+
+/* APPLY GLOW */
+.ready-card.glow {
+  animation: glowPulse 1.5s ease-in-out infinite;
+
+  /* REGULAR CARD (WHITE) */
+.ready-card.white.glow {
+  outline: 6px solid white ; /* 🔴 red outline */
+  outline-offset: 8px;
+}
+
+/* PRIORITY CARD (RED) */
+.ready-card.red.glow {
+  outline: 6px solid #e63946; /* ⚪ white outline */
+  outline-offset: 8px;
+}
+
 }
 
 /* ===================== */
@@ -21,150 +267,21 @@ body {
   align-items: center;
 }
 
+/* LOGO */
 .logo {
-  width: 55px;
+  height: 60px;  /* 🔥 PERFECT SIZE */
+  width: auto;
 }
 
-.brand {
-  color: #e63946;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* CLOCK */
-.clock {
-  background: #dcdcdc;
-  padding: 18px 50px;
-  border-radius: 25px;
-  font-size: 26px;
-  font-weight: bold;
+/* LOGO + TEXT */
+.logo-section {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
-/* ===================== */
-/* MAIN LAYOUT */
-/* ===================== */
-.display-container {
-  height: 100vh;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  padding: 160px 80px 40px;
-  gap: 60px;
-}
-
-/* LEFT PANEL */
-.left-panel {
-  flex: 2;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-/* RIGHT PANEL */
-.right-panel {
-  flex: 1;
-  max-width: 380px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-/* ===================== */
-/* TITLES */
-/* ===================== */
-.left-panel h2,
-.right-panel h2 {
-  font-size: 28px;
-  margin-bottom: 25px;
-}
-
-/* ===================== */
-/* READY CONTAINER */
-/* ===================== */
-.ready-container {
-  display: flex;
-  gap: 60px;
-}
-
-/* ===================== */
-/* READY CARDS */
-/* ===================== */
-.ready-card {
-  width: 445px;
-  height: 445px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 30px;
-
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.15),
-    0 10px 15px rgba(0,0,0,0.1);
-
-  transition: all 0.2s ease;
-}
-
-.ready-card:hover {
-  transform: translateY(-5px) scale(1.02);
-}
-
-/* NUMBER */
-.ready-card div {
-  font-size: 150px;
-  font-weight: 900;
-  margin-bottom: 10px;
-
-  text-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-
-/* TEXT */
-.ready-card h3 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.ready-card p {
-  margin-top: 5px;
-  font-size: 15px;
-  opacity: 0.75;
-}
-
-/* COLORS */
-.ready-card.white {
-  background: #f5f5f5;
-  color: #111;
-}
-
-.ready-card.red {
-  background: #f07171;
-  color: white;
-}
-
-/* ===================== */
-/* QUEUE LIST */
-/* ===================== */
-.queue-list {
-  margin-top: 20px;
-}
-
-.queue-item {
-  background: #f3f3f3;
-  padding: 18px;
-  border-radius: 15px;
-  margin-bottom: 12px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.08);
-}
-
-.queue-item.priority {
-  background: #f07171;
-  color: white;
+.brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e63946;
 }
