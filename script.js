@@ -7,6 +7,7 @@ let current = JSON.parse(localStorage.getItem("current")) || null;
 let regularCounter = JSON.parse(localStorage.getItem("regularCounter")) || 1;
 let priorityCounter = JSON.parse(localStorage.getItem("priorityCounter")) || 1;
 
+
 // =====================
 // ADD QUEUE
 // =====================
@@ -18,7 +19,13 @@ function addQueue(type) {
 
   save();
   renderAll();
-  printTicket(newItem);
+
+  // 🔥 CHECK TOGGLE
+  let shouldPrint = document.getElementById("printToggle").checked;
+
+  if (shouldPrint) {
+    printTicket(newItem);
+  }
 
   localStorage.setItem("regularCounter", JSON.stringify(regularCounter));
   localStorage.setItem("priorityCounter", JSON.stringify(priorityCounter));
@@ -59,6 +66,36 @@ function callCurrent(type) {
   speak(item);
 }
 
+
+function nextQueue(type) {
+  // 🔥 ALWAYS GET FRESH DATA
+  queue = JSON.parse(localStorage.getItem("queue")) || [];
+
+  console.log("QUEUE:", queue);
+  console.log("TYPE:", type);
+
+  // 🔍 find first match
+  let index = queue.findIndex(q => q.type === type);
+
+  // if (index === -1) {
+  //   alert("No patient in queue!");
+  //   return;
+  // }
+
+  // ✅ remove correct item
+  let called = queue.splice(index, 1)[0];
+
+  console.log("REMOVED:", called);
+
+  // 🔥 SAVE GLOW DATA
+  localStorage.setItem("lastCalledType", called.type);
+  localStorage.setItem("lastCalledTime", Date.now());
+
+  // 🔥 SAVE UPDATED QUEUE
+  localStorage.setItem("queue", JSON.stringify(queue));
+
+  renderAll();
+}
 // =====================
 // VOICE
 // =====================

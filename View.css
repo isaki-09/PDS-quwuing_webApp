@@ -285,3 +285,30 @@ body {
   font-weight: bold;
   color: #e63946;
 }
+
+/* ===================== */
+/* NUMBER COLOR ANIMATION */
+/* ===================== */
+
+/* REGULAR: black → red */
+@keyframes regularColorSwitch {
+  0% { color: black; }
+  50% { color: #e63946; }
+  100% { color: black; }
+}
+
+/* PRIORITY: white → black */
+@keyframes priorityColorSwitch {
+  0% { color: white; }
+  50% { color: black; }
+  100% { color: white; }
+}
+
+/* APPLY TO NUMBER ONLY */
+.ready-card.white.glow div {
+  animation: regularColorSwitch 1.5s ease-in-out infinite;
+}
+
+.ready-card.red.glow div {
+  animation: priorityColorSwitch 1.5s ease-in-out infinite;
+}
