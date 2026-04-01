@@ -18,30 +18,59 @@ body {
 
   display: flex;
   justify-content: space-between;
+  align-items: center; /* 🔥 vertical center */
+}
+
+/* ===================== */
+/* LOGO SECTION */
+/* ===================== */
+.logo-section {
+  display: flex;
   align-items: center;
 }
 
+/* ===================== */
+/* LOGO */
+/* ===================== */
 .logo {
-  width: 80px; /* 🔥 bigger */
-}
+  width: 300px;   /* 🔥 adjust here */
+  height: auto;
 
-.logo {
-  height: 70px;   /* 🔥 perfect for your layout */
-  width: auto;
   object-fit: contain;
+  display: block;
 }
 
-.brand {
-  font-size: 22px;
-}
-
-/* CLOCK */
-.clock {
+/* ===================== */
+/* TIME BOX IMPROVED */
+/* ===================== */
+.time-box {
   background: #dcdcdc;
-  padding: 25px 70px;
-  border-radius: 30px;
-  font-size: 36px; /* 🔥 bigger */
+  padding: 25px 50px;
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: row; /* 🔥 stack date + time */
+  /* align-items: flex-start; align to top */
+  gap: 90px; /* space between date and time */
+  justify-content: center;
+}
+
+/* DATE (SMALLER BUT VISIBLE) */
+#dayDate {
+  font-size: 50px;
+  opacity: 0.7;
+}
+
+/* TIME (MAIN FOCUS) */
+#time {
+  font-size: 60px; /* 🔥 BIG */
   font-weight: bold;
+}
+
+/* AM/PM */
+#ampm {
+  font-size: 24px;
+  margin-left: 8px;
 }
 
 /* ===================== */

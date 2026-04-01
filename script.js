@@ -250,15 +250,44 @@ function renderDisplay() {
 function updateClock() {
   const now = new Date();
 
+  // TIME
   let hours = now.getHours();
   let minutes = now.getMinutes();
   let ampm = hours >= 12 ? "PM" : "AM";
 
-  hours = hours % 12 || 12;
+  let displayHour = hours % 12 || 12;
   minutes = minutes < 10 ? "0" + minutes : minutes;
 
-  document.getElementById("time").innerText = `${hours}:${minutes}`;
+  // DATE
+  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  let dayName = days[now.getDay()];
+  let month = months[now.getMonth()];
+  let date = now.getDate();
+
+  // GREETING
+  let greeting = "Good Morning";
+
+  if (hours >= 12 && hours < 18) {
+    greeting = "Good Afternoon";
+  } else if (hours >= 18) {
+    greeting = "Good Evening";
+  }
+
+  // APPLY
+  document.getElementById("time").innerText = `${displayHour}:${minutes}`;
   document.getElementById("ampm").innerText = ampm;
+
+  let dayDateEl = document.getElementById("dayDate");
+  if (dayDateEl) {
+    dayDateEl.innerText = `${dayName}, ${month} ${date}`;
+  }
+
+  let greetEl = document.getElementById("greetingText");
+  if (greetEl) {
+    greetEl.innerText = greeting;
+  }
 }
 
 setInterval(updateClock, 1000);

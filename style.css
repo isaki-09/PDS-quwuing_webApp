@@ -219,20 +219,47 @@ body {
 }
 
 /* ===================== */
-/* TIME */
+/* TIME BOX IMPROVED */
 /* ===================== */
 .time-box {
-  background: #ddd;
-  padding: 20px;
-  border-radius: 20px;
-  font-size: 30px;
+  background: #dcdcdc;
+  padding: 25px 50px;
+  border-radius: 25px;
+
   display: flex;
-  justify-content: space-between;
+  flex-direction: row; /* 🔥 stack date + time */
+  /* align-items: flex-start; align to top */
+  gap: 90px; /* space between date and time */
+  justify-content: center;
+}
+
+/* DATE (SMALLER BUT VISIBLE) */
+#dayDate {
+  font-size: 25px;
+  opacity: 0.7;
+}
+
+/* TIME (MAIN FOCUS) */
+#time {
+  font-size: 30px; /* 🔥 BIG */
+  font-weight: 400;
+}
+
+/* AM/PM */
+#ampm {
+  font-size: 15px;
+  margin-left: 8px;
 }
 
 /* ===================== */
 /* BUTTONS */
 /* ===================== */
+
+.btn, .next-btn {
+  min-height: 70px;   /* 🔥 bigger tap area */
+  font-size: 18px;
+}
+
 .button-group {
   display: flex;
   gap: 20px;
@@ -285,7 +312,7 @@ body {
 /* RESET BUTTON */
 /* ===================== */
 .reset-btn {
-  padding: 8px 18px;
+  padding: 15px 25px;
   border-radius: 10px;
   border: none;
   background: #222;
@@ -300,11 +327,12 @@ body {
 }
 
 .logo {
-  height: 50px;   /* 🔥 smaller */
+  height: 110px;   /* 🔥 smaller */
   width: auto;
   max-width: 220px; /* 🔥 limits long logo */
   object-fit: contain;
-  padding: 15px 40px;
+  padding: 0px 40px;
+  align-content: center;
 }
 
 /* ===================== */
